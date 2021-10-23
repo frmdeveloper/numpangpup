@@ -1,4 +1,7 @@
 # numpangpup
+Fungsi: Numpang puppeteer di perangkat lain tanpa memberatkan perangkat anda<br>
+Seperti, di termux
+___
 cara konek
 ___
 Javascript
