@@ -16,7 +16,7 @@ const puppeteer = require('puppeteer')
 })()
 ```
 ___
-Python
+Python (saya gk paham)
 ```
 async ():
 	from pyppeteer import connect
