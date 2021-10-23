@@ -1,4 +1,6 @@
 # numpangpup
+Anda ingin pup, disini tempat nya
+___
 Fungsi: Numpang puppeteer di perangkat lain tanpa memberatkan perangkat anda<br>
 Seperti, di termux
 ___
