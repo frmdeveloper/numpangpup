@@ -1,0 +1,27 @@
+{
+  "name": "numpangpup",
+  "version": "3.3.3",
+  "description": "git clone https://github.com/frmdeveloper/frmdev",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "cors": "latest",
+    "express": "latest",
+    "ngrok": "^4.2.2",
+    "nodemon": "latest",
+    "puppeteer": "latest",
+    "ssl-express-www": "latest"
+  },
+  "scripts": {
+    "start": "nodemon -x 'node index.js || touch uh.js'"
+  },
+  "nodemonConfig": {
+    "ext": "js,html,sh"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "7.20.x"
+  }
+}
