@@ -65,3 +65,6 @@ const puppeteer = require('puppeteer');
 app.get('*', async(req, res) => {
 	res.json('p')
 })
+app.get('/wse', async(req, res) => {
+	res.json('\n\n'+ngrokurl.replace('https://', 'ws://')+'/devtools/'+browserWSEndpoint.split('devtools/')[1])
+})
