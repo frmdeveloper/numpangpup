@@ -43,8 +43,8 @@ const browser = await puppeteer.launch({
         '--disable-accelerated-video-decode',
         '--no-zygote',
 		'--single-process' // <- this one doesn't works in Windows
-		]
-  })
+	]
+})
 const browserWSEndpoint = await browser.wsEndpoint()
 app.get('/', async(req, res) => {
 	const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
