@@ -2,6 +2,7 @@
   "name": "numpangpup",
   "version": "3.3.3",
   "dependencies": {
+    "http-proxy": "latest",
     "nodemon": "latest",
     "puppeteer": "latest"
   },
