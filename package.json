@@ -3,6 +3,7 @@
   "version": "3.3.3",
   "dependencies": {
     "cors": "latest",
+    "express": "latest",
     "http-forward": "latest",
     "nodemon": "latest",
     "puppeteer": "latest",
