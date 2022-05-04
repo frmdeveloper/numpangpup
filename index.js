@@ -45,9 +45,9 @@ const browser = await puppeteer.launch({
 		'--single-process' // <- this one doesn't works in Windows
 		]
   })
-const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
 const browserWSEndpoint = await browser.wsEndpoint()
 app.get('/', (req, res) => {
+	const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
 	res.json({ browserWSEndpoint, pagesCount })
 }
 app.use((req, res) => {
@@ -55,6 +55,7 @@ app.use((req, res) => {
   forward(req, res)
 })
 server.listen(port, () => {
+	const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
 	console.log({ browserWSEndpoint, pagesCount })
 })
 
