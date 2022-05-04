@@ -6,8 +6,7 @@
     "express": "latest",
     "http-forward": "latest",
     "nodemon": "latest",
-    "puppeteer": "latest",
-    "puppeteer-core": "latest"
+    "puppeteer": "latest"
   },
   "scripts": {
     "start": "nodemon -x 'node index.js || touch index.js'"
