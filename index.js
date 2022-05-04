@@ -1,23 +1,17 @@
-const puppeteer = require('puppeteer')
-const httpProxy = require("http-proxy")
-const host = "0.0.0.0"
-const port = process.env.PORT || 8080 || 5000 || 3000
-async function createServer(WSEndPoint, host, port) {
-  await httpProxy
-    .createServer({
-      target: WSEndPoint, // where we are connecting
-      ws: true,
-      localAddress: host // where to bind the proxy
-    })
-    .listen(port); // which port the proxy should listen to
-  return `ws://${host}:${port}`; // ie: ws://123.123.123.123:8080
-}
+(async() => {
 
-async function start () {
-  const browser = await puppeteer.launch({
+const puppeteer = require('puppeteer')
+const http = require('http')
+const forward = require('http-forward')
+const app = require('express')()
+const cors = require('cors')
+const server = http.createServer(app)
+app.use(cors())
+const port = process.env.PORT || 8080 || 5000 || 3000
+const browser = await puppeteer.launch({
 	//executablePath: process.cwd()+'',
 	headless: true,
-		args: [
+	args: [
 		'--log-level=3',
 		'--disable-dev-shm-usage',
         '--no-default-browser-check',
@@ -51,9 +45,19 @@ async function start () {
 		'--single-process' // <- this one doesn't works in Windows
 		]
   })
-  const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
-  const browserWSEndpoint = await browser.wsEndpoint()
-  const customWSEndpoint = await createServer(browserWSEndpoint, host, port)
-  console.log({ browserWSEndpoint, customWSEndpoint, pagesCount })
+  pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
+  browserWSEndpoint = await browser.wsEndpoint()
+  customWSEndpoint = await createServer(browserWSEndpoint, host, port)
 }
-start()
+app.get('/', (req, res) => {
+	res.json({ browserWSEndpoint, customWSEndpoint, pagesCount })
+}
+app.use((req, res) => {
+  req.forward = { target: url }
+  forward(req, res)
+})
+server.listen(PORT, () => {
+	console.log({ browserWSEndpoint, customWSEndpoint, pagesCount })
+})
+
+})
