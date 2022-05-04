@@ -1,27 +1,20 @@
-var express = require('express'),
-  cors = require('cors'),
-  secure = require('ssl-express-www');
-const PORT = process.env.PORT || 8080 || 5000 || 3000
-const app = express()
-const bodyParser = require('body-parser')
-const { spawn, exec, execSync } = require("child_process")
-app.enable('trust proxy')
-app.set("json spaces",2)
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
-app.use(secure)
-app.use(express.static("public"))
-app.listen(PORT, () => {
-  console.log(`Server berjalan dengan port: ${PORT}`)
-})
-const ngrok = require('ngrok');
-(async function() {
-  await ngrok.authtoken("1zsvdYClpKdGLVkc9jVLJgUfJj9_6bomDQGhHqQ2dYqXmgkUb")  
-})();
-const puppeteer = require('puppeteer');
-(async () => {
-  browserrr = await puppeteer.launch({
+const puppeteer = require('puppeteer')
+const httpProxy = require("http-proxy")
+const host = "0.0.0.0"
+const port = process.env.PORT || 8080 || 5000 || 3000
+async function createServer(WSEndPoint, host, port) {
+  await httpProxy
+    .createServer({
+      target: WSEndPoint, // where we are connecting
+      ws: true,
+      localAddress: host // where to bind the proxy
+    })
+    .listen(port); // which port the proxy should listen to
+  return `ws://${host}:${port}`; // ie: ws://123.123.123.123:8080
+}
+
+async function start () {
+  const browser = await puppeteer.launch({
 		headless: true,
 		args: [
 		'--log-level=3',
@@ -57,14 +50,9 @@ const puppeteer = require('puppeteer');
 		'--single-process' // <- this one doesn't works in Windows
 		]
   })
-  browserWSEndpoint = await browserrr.wsEndpoint()
-  ngrokurl = await ngrok.connect({proto: 'http', addr: browserWSEndpoint.split("127.0.0.1:")[1].split('/')[0]})
-  console.clear()
-  console.log('\n\n'+ngrokurl.replace('https://', 'ws://')+'/devtools/'+browserWSEndpoint.split('devtools/')[1])
-})();
-app.get('*', async(req, res) => {
-	res.json('p')
-})
-app.get('/wse', async(req, res) => {
-	res.json('\n\n'+ngrokurl.replace('https://', 'ws://')+'/devtools/'+browserWSEndpoint.split('devtools/')[1])
-})
+  const pagesCount = (await browser.pages()).length // just to make sure we have the same stuff on both place
+  const browserWSEndpoint = await browser.wsEndpoint()
+  const customWSEndpoint = await createServer(browserWSEndpoint, host, port)
+  console.log({ browserWSEndpoint, customWSEndpoint, pagesCount })
+}
+start()
