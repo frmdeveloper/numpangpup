@@ -1,4 +1,4 @@
-process.env.TZ = 'Asia/Jakarta"
+process.env.TZ = "Asia/Jakarta"
 const puppeteer = require('puppeteer')
 const httpProxy = require("http-proxy")
 const host = "0.0.0.0";
