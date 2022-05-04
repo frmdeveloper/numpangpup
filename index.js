@@ -59,4 +59,4 @@ server.listen(port, async() => {
 	console.log({ browserWSEndpoint, pagesCount })
 })
 
-})
+})()
