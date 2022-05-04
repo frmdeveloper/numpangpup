@@ -56,7 +56,7 @@ app.use((req, res) => {
   req.forward = { target: url }
   forward(req, res)
 })
-server.listen(PORT, () => {
+server.listen(port, () => {
 	console.log({ browserWSEndpoint, customWSEndpoint, pagesCount })
 })
 
