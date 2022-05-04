@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer-core')
+const puppeteer = require('puppeteer')
 const httpProxy = require("http-proxy")
 const host = "0.0.0.0"
 const port = process.env.PORT || 8080 || 5000 || 3000
@@ -15,7 +15,8 @@ async function createServer(WSEndPoint, host, port) {
 
 async function start () {
   const browser = await puppeteer.launch({
-		headless: true,
+	//executablePath: process.cwd()+'',
+	headless: true,
 		args: [
 		'--log-level=3',
 		'--disable-dev-shm-usage',
