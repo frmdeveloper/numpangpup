@@ -50,7 +50,6 @@ const browser = await puppeteer.launch({
 		'--single-process' // <- this one doesn't works in Windows
 	]
 })
-const browserWSEndpoint = await browser.wsEndpoint()
 const pagesCount = (await browser.pages()).length; // just to make sure we have the same stuff on both place
 const browserWSEndpoint = await browser.wsEndpoint();
 const customWSEndpoint = await createServer(browserWSEndpoint, host, port); // create the server here
