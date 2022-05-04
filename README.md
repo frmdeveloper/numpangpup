@@ -1,7 +1,7 @@
 # numpangpup
 Anda ingin puppeteer, disini tempat nya
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/frmdeveloper/frmdev)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/frmdeveloper/numpangpup)
 
 ___
 Fungsi: Numpang puppeteer di perangkat lain tanpa memberatkan perangkat anda<br>
