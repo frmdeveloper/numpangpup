@@ -1,0 +1,7 @@
+{
+  "name": "FRM",
+  "description": "HEROKU",
+  "repository": "https://github.com/frmdeveloper/numpangpup",
+  "logo": "https://www.frm.rf.gd/Logo_FRM-picsay.png",
+  "stack": "container"
+ }
