@@ -51,7 +51,7 @@ app.get('/', async(req, res) => {
 	res.json({ browserWSEndpoint, pagesCount })
 })
 app.use((req, res) => {
-  req.forward = { target: url }
+  req.forward = { target: browserWSEndpoint.split('/')[2] }
   forward(req, res)
 })
 server.listen(port, async() => {
