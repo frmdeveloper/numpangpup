@@ -16,6 +16,7 @@ async function createServer(WSEndPoint, host, port) {
 const puppeteer = require('puppeteer')
 const browser = await puppeteer.launch({
 	//executablePath: process.cwd()+'',
+	defaultViewport: { width: 1280, height: 720 },
 	headless: true,
 	args: [
 		'--log-level=3',
