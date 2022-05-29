@@ -3,7 +3,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/frmdeveloper/numpangpup)
 
 ___
-**Fungsi:** Numpang/kontrol puppeteer dari perangkat lain<br>
+**Fungsi:** Numpang/kontol puppeteer dari perangkat lain<br>
 ___
 cara menggunakan di JS
 ```js
