@@ -5,7 +5,7 @@ Deploy ke heroku harus lewat tombol ungu<br>
 ___
 **Fungsi:** Numpang/kontol puppeteer dari perangkat lain<br>
 ___
-cara menggunakan di JS
+Contoh cara menggunakan di JS
 ```js
 const puppeteer = require('puppeteer-core')
 (async() => {
