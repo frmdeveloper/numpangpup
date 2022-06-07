@@ -1,21 +1,26 @@
 process.env.TZ = "Asia/Jakarta"
-const puppeteer = require('puppeteer')
+const http = require('http')
 const httpProxy = require("http-proxy")
-const host = "0.0.0.0";
+const express = require('express')
 const port = process.env.PORT || 8080 || 5000 || 3000
-async function createServer(WSEndPoint, host, port) {
-  await httpProxy
-    .createServer({
-      target: WSEndPoint,
-      ws: true,
-      localAddress: host
-    })
-    .listen(port)
-  return `ws://${host}:${port}`
+
+function createServer(target) {
+  var app = express()
+  var proxy = httpProxy.createProxyServer({ target, ws: true })
+  var server = http.createServer(app)
+  
+  app.get('/', function(req, res) {
+    res.send('Silahkan konek')
+  })
+  server.on('upgrade', function (req, socket, head) {
+    proxy.ws(req, socket, head)
+  })
+  server.listen(port)
 }
 
+// start browser
 async function start() {
-  const browser = await puppeteer.launch({
+  const browser = await require('puppeteer').launch({
     //executablePath: '',
     defaultViewport: { width: 1280, height: 720 },
     headless: true,
@@ -55,7 +60,7 @@ async function start() {
   })
   const pagesCount = (await browser.pages()).length
   const browserWSEndpoint = await browser.wsEndpoint()
-  const customWSEndpoint = await createServer(browserWSEndpoint, host, port)
+  const customWSEndpoint = await createServer(browserWSEndpoint)
   console.log({ browserWSEndpoint, customWSEndpoint, pagesCount })
 }
 start()
