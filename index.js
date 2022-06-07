@@ -3,6 +3,16 @@ const http = require('http')
 const httpProxy = require("http-proxy")
 const express = require('express')
 const port = process.env.PORT || 8080 || 5000 || 3000
+function parseQuery(queryString) {
+	if (!queryString) return {}
+    var query = {};
+    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
 
 function createServer(target) {
   var app = express()
@@ -13,7 +23,7 @@ function createServer(target) {
     res.send('Silahkan konek')
   })
   server.on('upgrade', function (req, socket, head) {
-    console.log(req.url)
+    req.query = parseQuery(req.url.split('?')[1])
     proxy.ws(req, socket, head)
   })
   server.listen(port)
