@@ -13,6 +13,7 @@ function createServer(target) {
     res.send('Silahkan konek')
   })
   server.on('upgrade', function (req, socket, head) {
+    console.log(req)
     proxy.ws(req, socket, head)
   })
   server.listen(port)
