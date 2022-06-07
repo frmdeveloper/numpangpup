@@ -16,6 +16,7 @@ function createServer(target) {
     proxy.ws(req, socket, head)
   })
   server.listen(port)
+  return `ws://0.0.0.0:${port}` 
 }
 
 // start browser
