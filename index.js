@@ -33,9 +33,9 @@ function createServer(target) {
 // start browser
 async function start() {
   const browser = await require('puppeteer').launch({
-    //executablePath: '',
+    //executablePath: '', //cari tahu sendiri
     defaultViewport: { width: 1280, height: 720 },
-    headless: true,
+    headless: true, //ubah ini ke false jika ingin memantau chrome
     args: [
       '--log-level=3',
       '--disable-dev-shm-usage',
