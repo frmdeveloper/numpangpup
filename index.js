@@ -33,41 +33,12 @@ function createServer(target) {
 // start browser
 async function start() {
   const browser = await require('puppeteer').launch({
-    executablePath: '', //cari tahu sendiri
+    executablePath: '', //untuk menyambungkan langsung ke chrome
     defaultViewport: { width: 1280, height: 720 },
     headless: true, //ubah ini ke false jika ingin memantau chrome
     args: [
-      '--log-level=3',
-      '--disable-dev-shm-usage',
-      '--no-default-browser-check',
-      '--disable-site-isolation-trials',
-      '--no-experiments',
-      '--ignore-gpu-blacklist',
-      '--ignore-certificate-errors',
-      '--ignore-certificate-errors-spki-list',
       '--disable-gpu',
-      '--disable-extensions',
-      '--disable-default-apps',
-      '--enable-features=NetworkService',
-      '--disable-setuid-sandbox',
-      '--no-sandbox',
-      // Extras
-      '--disable-webgl',
-      '--disable-threaded-animation',
-      '--disable-threaded-scrolling',
-      '--disable-in-process-stack-traces',
-      '--disable-histogram-customizer',
-      '--disable-gl-extensions',
-      '--disable-composited-antialiasing',
-      '--disable-canvas-aa',
-      '--disable-3d-apis',
-      '--disable-accelerated-2d-canvas',
-      '--disable-accelerated-jpeg-decoding',
-      '--disable-accelerated-mjpeg-decode',
-      '--disable-app-list-dismiss-on-blur',
-      '--disable-accelerated-video-decode',
-      '--no-zygote',
-      '--single-process' // <- this one doesn't works in Windows
+      '--no-sandbox'
     ]
   })
   const pagesCount = (await browser.pages()).length
