@@ -25,7 +25,7 @@ function createServer(target) {
   })
   server.on('upgrade', function (req, socket, head) {
     req.query = parseQuery(req.url.split('?')[1])
-    if (!lsToken.includes(req.query.token)) return console.log(socket)
+    if (!lsToken.includes(req.query.token)) return
     proxy.ws(req, socket, head)
   })
   server.listen(port)
