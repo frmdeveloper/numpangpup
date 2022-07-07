@@ -3,6 +3,7 @@ const http = require('http')
 const httpProxy = require("http-proxy")
 const express = require('express')
 const port = process.env.PORT || 8080 || 5000 || 3000
+const lsToken = ['free']
 function parseQuery(queryString) {
 	if (!queryString) return {}
     var query = {};
@@ -24,6 +25,7 @@ function createServer(target) {
   })
   server.on('upgrade', function (req, socket, head) {
     req.query = parseQuery(req.url.split('?')[1])
+    if (!lsToken.includes(req.query.token)) return
     proxy.ws(req, socket, head)
   })
   server.listen(port)
