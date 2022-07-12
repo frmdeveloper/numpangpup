@@ -36,6 +36,7 @@ function createServer(target) {
 async function start() {
   const browser = await require('puppeteer').launch({
     executablePath: '', //untuk menyambungkan langsung ke chrome
+    userDataDir: '', //untuk menyambungkan langsung ke chrome atau custom data
     defaultViewport: { width: 1280, height: 720 },
     headless: true, //ubah ini ke false jika ingin memantau chrome
     args: [
