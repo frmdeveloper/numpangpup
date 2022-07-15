@@ -8,7 +8,7 @@ ___
 **Contoh** cara menggunakan di JS
 ```js
 const puppeteer = require('puppeteer') // jika ini tidak bisa, gunakan module puppeteer-core
-global.browserWSEndpoint = "ws://bla.blabla.bla?token=free" //token bisa diubah
+global.browserWSEndpoint = "ws://bla.blabla.bla?token=free" //token bisa diubah di index.js
 
 async function screenshot(url) {
   let browser = await puppeteer.connect({ browserWSEndpoint })
