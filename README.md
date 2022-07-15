@@ -9,7 +9,7 @@ Contoh cara menggunakan di JS
 ```js
 const puppeteer = require('puppeteer-core')
 (async() => {
-  let browser = await puppeteer.connect({ browserWSEndpoint: "ws://bla.blabla.bla" })
+  let browser = await puppeteer.connect({ browserWSEndpoint: "ws://bla.blabla.bla?token=free" }) //token bisa diubah
   let page = await browser.newPage()
   await page.setViewport({ width: 1280, height: 720 })
   await page.goto('https://google.com')
