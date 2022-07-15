@@ -5,18 +5,21 @@ Deploy ke heroku harus lewat tombol ungu<br>
 ___
 **Fungsi:** Numpang/kontol puppeteer dari perangkat lain<br>
 ___
-Contoh cara menggunakan di JS
+**Contoh** cara menggunakan di JS
 ```js
-const puppeteer = require('puppeteer-core')
-(async() => {
-  let browser = await puppeteer.connect({ browserWSEndpoint: "ws://bla.blabla.bla?token=free" }) //token bisa diubah
+const puppeteer = require('puppeteer') // jika ini tidak bisa, gunakan module puppeteer-core
+global.browserWSEndpoint = "ws://bla.blabla.bla?token=free" //token bisa diubah
+
+async function screenshot(url) {
+  let browser = await puppeteer.connect({ browserWSEndpoint })
   let page = await browser.newPage()
   await page.setViewport({ width: 1280, height: 720 })
-  await page.goto('https://google.com')
-  await page.screenshot({ path: `./screenshot.png` })
+  await page.goto(url)
+  let result = await page.screenshot()
   await page.close()
-  browser.dicsonnect()
-})()
+  //browser.dicsonnect()
+  return result
+}
 ```
 ___
 #### Cara lain lihat google
