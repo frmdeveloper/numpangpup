@@ -4,6 +4,7 @@ const httpProxy = require("http-proxy")
 const express = require('express')
 const port = process.env.PORT || 8080 || 5000 || 3000
 const lsToken = ['free']
+const puppeteer = require('puppeteer')
 function parseQuery(queryString) {
 	if (!queryString) return {}
     var query = {};
@@ -35,7 +36,7 @@ function createServer(target) {
 
 // start browser
 async function start() {
-  const browser = await require('puppeteer').launch({
+  const browser = await puppeteer.launch({
     executablePath: '', //untuk menyambungkan langsung ke chrome
     userDataDir: '', //untuk menyambungkan langsung ke chrome atau custom data
     defaultViewport: { width: 1280, height: 720 },
