@@ -37,10 +37,8 @@ function createServer(target) {
 // start browser
 async function start() {
   const browser = await puppeteer.launch({
-    executablePath: '', //untuk menyambungkan langsung ke chrome
-        //executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
-    userDataDir: '', //untuk menyambungkan langsung ke chrome atau custom data
-        //userDataDir: "C:/\Users/\USERNAME/\AppData/\Local/\Google/\Chrome/\User Data",
+    executablePath: '', //untuk menyambungkan langsung ke chrome. Contoh: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    userDataDir: '', //untuk menyambungkan langsung ke chrome atau custom data. Contoh: "C:/\Users/\USERNAME/\AppData/\Local/\Google/\Chrome/\User Data",
     defaultViewport: { width: 1280, height: 720 },
     headless: true, //ubah ini ke false jika ingin memantau chrome
     args: [
