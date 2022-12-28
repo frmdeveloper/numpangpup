@@ -1,4 +1,4 @@
-FROM node:17
+FROM node:latest
 
 RUN apt update -y
 RUN apt-get install -y --no-install-recommends chromium
