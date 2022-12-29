@@ -9,4 +9,4 @@ COPY package.json .
 RUN npm install
 COPY . .
 EXPOSE 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306
-CMD pm2-runtime index.js --name puppeteer
+CMD pm2 index.js --name puppeteer && pm2 logs
