@@ -8,4 +8,4 @@ RUN npm i -g pm2
 COPY package.json .
 RUN npm install
 COPY . .
-CMD node .
+CMD pm2-runtime index.js --name puppeteer
