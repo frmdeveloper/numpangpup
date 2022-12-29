@@ -2,7 +2,7 @@ process.env.TZ = "Asia/Jakarta"
 const http = require('http')
 const httpProxy = require("http-proxy")
 const express = require('express')
-const port = process.env.PORT || 8080 || 5000 || 3000
+const port = process.env.PORT || 80 || 8080 || 3000
 const lsToken = ['free']
 const puppeteer = require('puppeteer')
 function parseQuery(queryString) {
