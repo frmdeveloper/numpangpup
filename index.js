@@ -5,8 +5,10 @@ const express = require('express')
 const port = process.env.PORT || 80 || 8080 || 3000
 const lsToken = ['free']
 const puppeteer = require('puppeteer')
+const which = require('which')
+
 function parseQuery(queryString) {
-	if (!queryString) return {}
+    if (!queryString) return {}
     var query = {};
     var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
     for (var i = 0; i < pairs.length; i++) {
@@ -37,10 +39,10 @@ function createServer(target) {
 // start browser
 async function start() {
   const browser = await puppeteer.launch({
-    executablePath: '', //untuk menyambungkan langsung ke chrome. Contoh: "C:/Program Files/Google/Chrome/Application/chrome.exe",
-    userDataDir: '', //untuk menyambungkan langsung ke chrome atau custom data. Contoh: "C:/\Users/\USERNAME/\AppData/\Local/\Google/\Chrome/\User Data",
+    executablePath: await which("google-chrome"),
+    userDataDir: './',
     defaultViewport: { width: 1280, height: 720 },
-    headless: true, //ubah ini ke false jika ingin memantau chrome
+    headless: true,
     args: [
       '--disable-gpu',
       '--no-sandbox'
