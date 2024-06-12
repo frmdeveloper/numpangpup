@@ -6,9 +6,7 @@
     "http": "latest",
     "http-proxy": "latest",
     "nodemon": "latest",
-    "puppeteer": "latest"
-  },
-  "scripts": {
-    "start": "nodemon -x 'node index.js || touch index.js'"
+    "puppeteer": "latest",
+    "which": "latest"
   }
 }
