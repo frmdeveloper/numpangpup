@@ -8,14 +8,13 @@ ___
 **Contoh** cara menggunakan di JS
 ```js
 const puppeteer = require("puppeteer-core")
-global.browserWSEndpoint = "ws://bla.blabla.bla?token=free" //token bisa diubah di index.js
 
 async function screenshot(url) {
-  let browser = await puppeteer.connect({ browserWSEndpoint })
-  let page = await browser.newPage()
+  const browser = await puppeteer.connect({browserURL: "http://your.url"})
+  const page = await browser.newPage()
   await page.setViewport({ width: 1280, height: 720 })
   await page.goto(url)
-  let result = await page.screenshot()
+  const result = await page.screenshot()
   await page.close()
   //browser.dicsonnect()
   return result
