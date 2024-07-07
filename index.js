@@ -10,9 +10,14 @@ const browser = await puppeteer.launch({
     args: [
       "--disable-gpu",
       "--no-sandbox",
-      "--remote-debugging-port="+port
     ]
 })
 const pagesCount = (await browser.pages()).length
-const browserWSEndpoint = await browser.wsEndpoint()
-console.log({ browserWSEndpoint, pagesCount })
+const wsen = await browser.wsEndpoint()
+const target = wsen.split("ws://")[1].split("/")[0]
+console.log({ target, wsen, pagesCount })
+
+import proxy from "http-proxy"
+await proxy.createServer({
+    target, ws: true
+}).listen(port)
