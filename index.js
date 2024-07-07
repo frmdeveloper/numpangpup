@@ -20,4 +20,5 @@ console.log({ target, wsen, pagesCount })
 import proxy from "http-proxy"
 await proxy.createServer({
     target, ws: true
-}).listen(port)
+})
+.listen(port)
