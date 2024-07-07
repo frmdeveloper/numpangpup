@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "http-proxy": "latest",
     "puppeteer": "latest",
     "which": "latest"
   }
