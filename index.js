@@ -39,7 +39,7 @@ function createServer(target) {
 // start browser
 async function start() {
   const browser = await puppeteer.launch({
-    executablePath: await which("google-chrome"),
+    executablePath: await which("chromium"),
     userDataDir: './',
     defaultViewport: { width: 1280, height: 720 },
     headless: true,
