@@ -1,11 +1,6 @@
 {
-  "name": "numpangpup",
-  "version": "3.3.3",
+  "type": "module",
   "dependencies": {
-    "express": "latest",
-    "http": "latest",
-    "http-proxy": "latest",
-    "nodemon": "latest",
     "puppeteer": "latest",
     "which": "latest"
   }
