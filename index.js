@@ -19,5 +19,5 @@ console.log({ target, wsen, pagesCount })
 
 import proxy from "http-proxy"
 proxy.createServer({
-    target, ws: true
+    target, ws:true, localAddress:0.0.0.0
 }).listen(port)
