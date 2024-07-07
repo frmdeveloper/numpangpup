@@ -14,11 +14,10 @@ const browser = await puppeteer.launch({
 })
 const pagesCount = (await browser.pages()).length
 const wsen = await browser.wsEndpoint()
-const target = wsen.split("ws://")[1].split("/")[0]
+const target = "http://"+wsen.split("ws://")[1].split("/")[0]
 console.log({ target, wsen, pagesCount })
 
 import proxy from "http-proxy"
-await proxy.createServer({
+proxy.createServer({
     target, ws: true
-})
-.listen(port)
+}).listen(port)
