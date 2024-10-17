@@ -1,4 +1,4 @@
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4567
 import which from "which"
 import puppeteer from "puppeteer"
 
